@@ -109,23 +109,36 @@ public class TurretAim : MonoBehaviour
         Debug.Log($"Current target - {target.gameObject.name}");
     }
 
+    private void SetEnemyAsTarget(Enemy enemy)
+    {
+        SetTarget(enemy.transform);
+        _currentEnemyTarget = enemy;
+    }
+
+    private void SetClosestEnemyAsTarget()
+    {
+        Enemy newEnemy = _detector.GetClosestEnemy(transform);
+        
+        if (newEnemy)
+            SetEnemyAsTarget(newEnemy);
+        else
+            Debug.Log("Can not find closest enemy");
+    }
+
     private void ResetTarget()
     {
         if (_target)
         {
             _target = null;
+            _currentEnemyTarget = null;
             haveTarget = false;
-            Debug.Log("Reset target");
         }
     }
 
     private void OnEnemyDetected(Enemy enemy)
     {
         if (!_currentEnemyTarget)
-        {
-            SetTarget(enemy.transform);
-            _currentEnemyTarget = enemy;
-        }
+            SetEnemyAsTarget(enemy);
     }
 
     private void OnEnemyUnobserved(Enemy enemy)
@@ -133,10 +146,7 @@ public class TurretAim : MonoBehaviour
         if (_currentEnemyTarget == enemy)
         {
             ResetTarget();
-            _currentEnemyTarget = null;
-            Enemy newEnemy = _detector.GetClosestEnemy(transform);
-            SetTarget(newEnemy.transform);
-            _currentEnemyTarget = newEnemy;
+            SetClosestEnemyAsTarget();
         }
     }
 }

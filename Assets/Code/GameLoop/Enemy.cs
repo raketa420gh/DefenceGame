@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public event Action OnDead;
+    public event Action<Enemy> OnDead;
 
     [SerializeField] private EnemyType _enemyType;
     [SerializeField] private AIPath _aiPath;
@@ -19,5 +19,10 @@ public class Enemy : MonoBehaviour
     {
         var finishArea = FindObjectOfType<FinishArea>();
         _aiPath.destination = finishArea.transform.position;
+    }
+
+    private void OnDisable()
+    {
+        OnDead?.Invoke(this);
     }
 }
