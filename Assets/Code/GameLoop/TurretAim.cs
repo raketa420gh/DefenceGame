@@ -1,17 +1,22 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
 public class TurretAim : MonoBehaviour
 {
+    public event Action<Transform> OnTargetSelected;
+    public event Action OnTargetUnselected;
+        
     [SerializeField] [Range(0, 180f)] private float _angle = 45f;
     [SerializeField] private float _maxTurnSpeed = 90f;
-
     private EnemyDetector _detector;
     private Transform _target;
     private Enemy _currentEnemyTarget;
     private bool isOutOfRange;
     private bool isAimed;
     private bool haveTarget;
+
+    public Transform Target => _target;
 
     private void Awake()
     {
@@ -35,7 +40,7 @@ public class TurretAim : MonoBehaviour
     private void OnDrawGizmos()
     {
 #if UNITY_EDITOR
-        var range = 20f;
+        var range = 18f;
         var dashLineSize = 2f;
         var turret = transform;
         var origin = turret.position;
@@ -105,7 +110,6 @@ public class TurretAim : MonoBehaviour
     {
         _target = target;
         haveTarget = true;
-
         Debug.Log($"Current target - {target.gameObject.name}");
     }
 
@@ -113,6 +117,8 @@ public class TurretAim : MonoBehaviour
     {
         SetTarget(enemy.transform);
         _currentEnemyTarget = enemy;
+
+        enemy.OnDead += OnCurrentEnemyDead;
     }
 
     private void SetClosestEnemyAsTarget()
@@ -142,6 +148,15 @@ public class TurretAim : MonoBehaviour
     }
 
     private void OnEnemyUnobserved(Enemy enemy)
+    {
+        if (_currentEnemyTarget == enemy)
+        {
+            ResetTarget();
+            SetClosestEnemyAsTarget();
+        }
+    }
+
+    private void OnCurrentEnemyDead(Enemy enemy)
     {
         if (_currentEnemyTarget == enemy)
         {

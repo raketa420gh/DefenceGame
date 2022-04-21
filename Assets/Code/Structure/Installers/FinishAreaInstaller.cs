@@ -3,6 +3,7 @@ using Zenject;
 public class FinishAreaInstaller : MonoInstaller
 {
     public FinishArea FinishArea;
+    
     public override void InstallBindings()
     {
         BindFinishArea();
@@ -11,7 +12,8 @@ public class FinishAreaInstaller : MonoInstaller
     private void BindFinishArea()
     {
         Container
-            .BindInstance(FinishArea)
+            .Bind<FinishArea>()
+            .FromInstance(FinishArea)
             .AsSingle();
     }
 }

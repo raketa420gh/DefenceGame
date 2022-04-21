@@ -21,6 +21,14 @@ public class Enemy : MonoBehaviour
         _aiPath.destination = finishArea.transform.position;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        var projectile = other.GetComponent<TurretShell>();
+
+        if (projectile)
+            Destroy(gameObject);
+    }
+
     private void OnDisable()
     {
         OnDead?.Invoke(this);

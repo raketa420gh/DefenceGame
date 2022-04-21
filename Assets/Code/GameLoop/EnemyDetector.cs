@@ -10,8 +10,6 @@ public class EnemyDetector : MonoBehaviour
     
     private readonly List<Enemy> _detectedEnemies = new List<Enemy>();
     private Enemy _closestEnemy;
-    
-    public List<Enemy> DetectedEnemies => _detectedEnemies;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,6 +18,7 @@ public class EnemyDetector : MonoBehaviour
         if (enemy)
         {
             _detectedEnemies.Add(enemy);
+            enemy.OnDead += RemoveEnemyFromDetectedList;
             OnEnemyDetected?.Invoke(enemy);
         }
     }
@@ -30,7 +29,7 @@ public class EnemyDetector : MonoBehaviour
 
         if (enemy)
         {
-            _detectedEnemies.Remove(enemy);
+            RemoveEnemyFromDetectedList(enemy);
             OnEnemyUnobserved?.Invoke(enemy);
         }
     }
@@ -53,5 +52,10 @@ public class EnemyDetector : MonoBehaviour
         }
 
         return _closestEnemy;
+    }
+
+    private void RemoveEnemyFromDetectedList(Enemy enemy)
+    {
+        _detectedEnemies.Remove(enemy);
     }
 }
