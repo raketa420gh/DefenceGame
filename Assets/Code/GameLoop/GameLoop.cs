@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class GameLoop : MonoBehaviour
 {
@@ -8,6 +9,13 @@ public class GameLoop : MonoBehaviour
     public EndLevelState EndLevelState;
 
     private LevelLoop _currentLevelLoop;
+    private Turret _turret;
+
+    [Inject]
+    public void Construct(Turret turret)
+    {
+        _turret = turret;
+    }
 
     private void Start()
     {
@@ -17,6 +25,16 @@ public class GameLoop : MonoBehaviour
     public void SetCurrentLevelLoop(LevelLoop levelLoop)
     {
         _currentLevelLoop = levelLoop;
+    }
+
+    public void StartTurretShooting()
+    {
+        InvokeRepeating(nameof(TurretShootToTarget), 0, 0.55f);
+    }
+
+    private void TurretShootToTarget()
+    {
+        _turret.ShootToTarget();
     }
 
     private void InitializeStateMachine()

@@ -21,14 +21,9 @@ public class Turret : MonoBehaviour, IFirearms
         _aim = GetComponentInChildren<TurretAim>();
     }
 
-    private void Start()
+    public void ShootToTarget()
     {
-        InvokeRepeating(nameof(ShootForward), 0, 0.55f);
-    }
-
-    private void ShootForward()
-    {
-        if (_aim.Target.position != null)
+        if (_aim.Target != null)
             Shoot(_aim.Target.position);
     }
 

@@ -16,3 +16,4 @@ public class EnemySpawnerInstaller : MonoInstaller
             .AsSingle();
     }
 }
+

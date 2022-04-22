@@ -13,5 +13,7 @@ public class StartLevelState : GameLoopState
         _levelLoop = new LevelLoop();
         gameLoop.SetCurrentLevelLoop(_levelLoop);
         _levelLoop.StartLevel();
+        
+        gameLoop.StartTurretShooting();
     }
 }
