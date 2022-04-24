@@ -7,7 +7,7 @@ public class Shell : MonoBehaviour, IProjectile
     
     [SerializeField] [Min(0)] private int _damage = 10;
     [SerializeField] [Min(0)] private float _speed = 50f;
-    [SerializeField] [Min(0)] private float _lifeTime = 3f;
+    [SerializeField] [Min(0)] private float _lifeTime = 2f;
     private Vector3 _targetPosition;
     
     private void OnEnable()
@@ -18,12 +18,15 @@ public class Shell : MonoBehaviour, IProjectile
     private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed * Time.deltaTime);
+        
+        if (transform.position == _targetPosition)
+            Destroy(gameObject);
     }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        InflictDamage();
         Destroy(gameObject);
+        InflictDamage();
     }
     
     public void SetTarget(Vector3 targetPosition)

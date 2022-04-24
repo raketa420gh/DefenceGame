@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -8792318133318154995}
   - component: {fileID: 2806406307709829206}
   m_Layer: 0
-  m_Name: Warrior
+  m_Name: TestWarrior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +149,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.24935623
+  m_Radius: 0.2845856
   m_Height: 1.0065329
   m_Direction: 1
   m_Center: {x: 0, y: 0.49169374, z: 0}
@@ -491,7 +491,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ab56992bc36269746b198778be04fcb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

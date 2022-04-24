@@ -9,11 +9,15 @@ public class GameLoop : MonoBehaviour
     public EndLevelState EndLevelState;
 
     private LevelLoop _currentLevelLoop;
+    private EnemySpawner _enemySpawner;
     private Turret _turret;
 
+    public EnemySpawner EnemySpawner => _enemySpawner;
+
     [Inject]
-    public void Construct(Turret turret)
+    public void Construct(EnemySpawner enemySpawner, Turret turret)
     {
+        _enemySpawner = enemySpawner;
         _turret = turret;
     }
 
@@ -29,7 +33,7 @@ public class GameLoop : MonoBehaviour
 
     public void StartTurretShooting()
     {
-        InvokeRepeating(nameof(TurretShootToTarget), 0, 0.55f);
+        InvokeRepeating(nameof(TurretShootToTarget), 0, 0.2f);
     }
 
     private void TurretShootToTarget()

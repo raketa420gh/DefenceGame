@@ -5,6 +5,7 @@ public class EnemyType : ScriptableObject
 {
     public string Name;
     public string PrefabPath;
+    public EnemyTier Tier;
     public int Health;
     public float MoveSpeed;
 }

@@ -1,6 +1,7 @@
 public class StartLevelState : GameLoopState
 {
     private LevelLoop _levelLoop;
+    private EnemySpawner _enemySpawner;
     
     public StartLevelState(GameLoop gameLoop, StateMachine stateMachine) : base(gameLoop, stateMachine)
     {
@@ -10,7 +11,7 @@ public class StartLevelState : GameLoopState
     {
         base.Enter();
 
-        _levelLoop = new LevelLoop();
+        _levelLoop = new LevelLoop(gameLoop.EnemySpawner);
         gameLoop.SetCurrentLevelLoop(_levelLoop);
         _levelLoop.StartLevel();
         

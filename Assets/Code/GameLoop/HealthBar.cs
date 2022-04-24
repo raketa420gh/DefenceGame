@@ -27,7 +27,7 @@ public class HealthBar : MonoBehaviour
     private void LateUpdate()
     {
         transform.LookAt(Camera.main.transform);
-        transform.Rotate(0, 180, 0);
+        transform.rotation = Quaternion.Euler(new Vector3(45, 0, transform.rotation.z));;
     }
 
     private IEnumerator ChangeToCurrentPercent(float currentHealthPercent)

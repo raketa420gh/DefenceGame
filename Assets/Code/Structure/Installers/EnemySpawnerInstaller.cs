@@ -12,7 +12,8 @@ public class EnemySpawnerInstaller : MonoInstaller
     private void BindEnemySpawner()
     {
         Container
-            .BindInstance(EnemySpawner)
+            .Bind<EnemySpawner>()
+            .FromInstance(EnemySpawner)
             .AsSingle();
     }
 }

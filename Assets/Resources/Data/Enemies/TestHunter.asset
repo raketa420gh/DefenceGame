@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56ed5147273040ada06cc9fed451c18f, type: 3}
-  m_Name: Warrior
+  m_Name: TestHunter
   m_EditorClassIdentifier: 
-  Name: Warrior
-  PrefabPath: Prefabs/Warrior
-  Health: 50
-  MoveSpeed: 1
+  Name: TestHunter
+  PrefabPath: Prefabs/TestHunter
+  Tier: 3
+  Health: 40
+  MoveSpeed: 0.9
