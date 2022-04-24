@@ -5,15 +5,17 @@ public class LevelLoop
 {
     public event Action OnLevelStarted;
     public event Action OnLevelWon;
-    public event Action OnLevelLosed;
+    public event Action OnLevelLose;
 
-    private EnemySpawner _enemySpawner;
+    private EnemyDetector _enemyDetector;
 
-    public LevelLoop(EnemySpawner enemySpawner) => _enemySpawner = enemySpawner;
+    public LevelLoop(EnemyDetector enemyDetector)
+    {
+        _enemyDetector = enemyDetector;
+    }
 
     public void StartLevel()
     {
-        _enemySpawner.StartSpawningEnemies(EnemyTier.Tier3, 1f);
         Debug.Log($"OnLevelStarted");
         OnLevelStarted?.Invoke();
     }
@@ -27,6 +29,6 @@ public class LevelLoop
     public void Lose()
     {
         Debug.Log($"OnLevelLosed");
-        OnLevelLosed?.Invoke();
+        OnLevelLose?.Invoke();
     }
 }

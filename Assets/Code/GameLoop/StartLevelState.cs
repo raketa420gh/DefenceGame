@@ -1,40 +1,52 @@
-using System;
-using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
-
 public class StartLevelState : GameLoopState
 {
     private LevelLoop _levelLoop;
     private EnemySpawner _enemySpawner;
+    private EnemyDetector _enemyDetector;
     private Turret _turret;
     
-    public StartLevelState(GameLoop gameLoop, StateMachine stateMachine, EnemySpawner enemySpawner, Turret turret) : base(gameLoop, stateMachine)
+    public StartLevelState(GameLoop gameLoop, 
+        StateMachine stateMachine, 
+        EnemySpawner enemySpawner, 
+        EnemyDetector enemyDetector, 
+        Turret turret)
+        : base(gameLoop, stateMachine)
     {
         _enemySpawner = enemySpawner;
+        _enemyDetector = enemyDetector;
         _turret = turret;
     }
 
     public override void Enter()
     {
         base.Enter();
-        _levelLoop = new LevelLoop(_enemySpawner);
-        _levelLoop.StartLevel();
-        StartTurretShooting(0.2f);
+        
+        StartNewLevel();
     }
 
-    private void TurretShootToTarget()
+    private void StartNewLevel()
     {
-        _turret.ShootToTarget();
+        _levelLoop = new LevelLoop(_enemyDetector);
+        _levelLoop.OnLevelStarted += OnLevelStarted;
+        _levelLoop.OnLevelWon += OnLevelWon;
+        _levelLoop.OnLevelLose += OnLevelLose;
+        
+        _levelLoop.StartLevel();
     }
     
-    private async Task StartTurretShooting(float period, float startDelay = 0f)
+    private void OnLevelStarted()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(startDelay));
+        _enemySpawner.StartSpawningEnemies(EnemyTier.Tier3, 1f);
+        _turret.StartTurretShooting(0.5f);
+    }
 
-        while (true)
-        {
-            TurretShootToTarget();
-            await UniTask.Delay(TimeSpan.FromSeconds(period));
-        }
+    private void OnLevelWon()
+    {
+        
+    }
+
+    private void OnLevelLose()
+    {
+        
     }
 }

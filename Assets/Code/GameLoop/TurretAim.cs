@@ -1,15 +1,12 @@
-using System;
 using UnityEditor;
 using UnityEngine;
+using Zenject;
 
 public class TurretAim : MonoBehaviour
 {
-    public event Action<Transform> OnTargetSelected;
-    public event Action OnTargetUnselected;
-        
     [SerializeField] [Range(0, 180f)] private float _angle = 45f;
     [SerializeField] private float _maxTurnSpeed = 90f;
-    private EnemyDetector _detector;
+    private EnemyDetector _enemyDetector;
     private Transform _target;
     private Enemy _currentEnemyTarget;
     private bool isOutOfRange;
@@ -18,15 +15,16 @@ public class TurretAim : MonoBehaviour
 
     public Transform Target => _target;
 
-    private void Awake()
+    [Inject]
+    public void Construct(EnemyDetector enemyDetector)
     {
-        _detector = GetComponentInParent<EnemyDetector>();
+        _enemyDetector = enemyDetector;
     }
 
     private void OnEnable()
     {
-        _detector.OnEnemyDetected += OnEnemyDetected;
-        _detector.OnEnemyUnobserved += OnEnemyUnobserved;
+        _enemyDetector.OnEnemyDetected += OnEnemyDetected;
+        _enemyDetector.OnEnemyUnobserved += OnEnemyUnobserved;
     }
 
     private void Update()
@@ -73,8 +71,8 @@ public class TurretAim : MonoBehaviour
 
     private void OnDisable()
     {
-        _detector.OnEnemyDetected -= OnEnemyDetected;
-        _detector.OnEnemyUnobserved -= OnEnemyUnobserved;
+        _enemyDetector.OnEnemyDetected -= OnEnemyDetected;
+        _enemyDetector.OnEnemyUnobserved -= OnEnemyUnobserved;
     }
 
     private void Aim(Vector3 targetPoint)
@@ -123,7 +121,7 @@ public class TurretAim : MonoBehaviour
 
     private void SetClosestEnemyAsTarget()
     {
-        Enemy newEnemy = _detector.GetClosestEnemy(transform);
+        Enemy newEnemy = _enemyDetector.GetClosestEnemy(transform);
         
         if (newEnemy)
             SetEnemyAsTarget(newEnemy);

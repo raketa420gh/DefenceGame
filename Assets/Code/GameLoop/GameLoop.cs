@@ -9,12 +9,14 @@ public class GameLoop : MonoBehaviour
     public EndLevelState EndLevelState;
     
     private EnemySpawner _enemySpawner;
+    private EnemyDetector _enemyDetector;
     private Turret _turret;
 
     [Inject]
-    public void Construct(EnemySpawner enemySpawner, Turret turret)
+    public void Construct(EnemySpawner enemySpawner, EnemyDetector enemyDetector, Turret turret)
     {
         _enemySpawner = enemySpawner;
+        _enemyDetector = enemyDetector;
         _turret = turret;
     }
 
@@ -28,7 +30,7 @@ public class GameLoop : MonoBehaviour
         GameLoopStateMachine = new StateMachine();
 
         LoadLevelState = new LoadLevelState(this, GameLoopStateMachine);
-        StartLevelState = new StartLevelState(this, GameLoopStateMachine, _enemySpawner, _turret);
+        StartLevelState = new StartLevelState(this, GameLoopStateMachine, _enemySpawner, _enemyDetector, _turret);
         EndLevelState = new EndLevelState(this, GameLoopStateMachine);
 
         GameLoopStateMachine.ChangeState(LoadLevelState);
