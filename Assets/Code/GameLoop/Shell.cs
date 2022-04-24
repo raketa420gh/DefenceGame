@@ -1,9 +1,13 @@
+using System;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour, IProjectile
+public class Shell : MonoBehaviour, IProjectile
 {
-    [SerializeField] private float _speed = 50f;
-    [SerializeField] private float _lifeTime = 3f;
+    public event Action<int> OnDamageInflicted;
+    
+    [SerializeField] [Min(0)] private int _damage = 10;
+    [SerializeField] [Min(0)] private float _speed = 50f;
+    [SerializeField] [Min(0)] private float _lifeTime = 3f;
     private Vector3 _targetPosition;
     
     private void OnEnable()
@@ -18,11 +22,17 @@ public class Projectile : MonoBehaviour, IProjectile
 
     protected virtual void OnTriggerEnter(Collider other)
     {
+        InflictDamage();
         Destroy(gameObject);
     }
     
     public void SetTarget(Vector3 targetPosition)
     {
         _targetPosition = targetPosition;
+    }
+
+    private void InflictDamage()
+    {
+        OnDamageInflicted?.Invoke(_damage);
     }
 }

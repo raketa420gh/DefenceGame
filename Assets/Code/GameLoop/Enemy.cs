@@ -9,10 +9,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyType _enemyType;
     [SerializeField] private AIPath _aiPath;
     [SerializeField] private Seeker _seeker;
+    private Health _health;
     
     private void Awake()
     {
         _aiPath.maxSpeed = _enemyType.MoveSpeed;
+        _health = GetComponent<Health>();
+        
+        _health.Setup(_enemyType.Health);
+
+        _health.OnOver += OnHealthOver;
     }
 
     private void OnEnable()
@@ -23,14 +29,29 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var projectile = other.GetComponent<TurretShell>();
+        var shell = other.GetComponent<Shell>();
 
-        if (projectile)
-            Destroy(gameObject);
+        if (shell)
+            shell.OnDamageInflicted += OnDamaged;
     }
 
     private void OnDisable()
     {
         OnDead?.Invoke(this);
+    }
+
+    private void TakeDamage(int amount)
+    {
+        _health.ChangeHealth(amount);
+    }
+
+    private void OnDamaged(int amount)
+    {
+        TakeDamage(amount);
+    }
+
+    private void OnHealthOver()
+    {
+        Destroy(gameObject);
     }
 }

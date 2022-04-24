@@ -24,7 +24,10 @@ public class Turret : MonoBehaviour, IFirearms
     public void ShootToTarget()
     {
         if (_aim.Target != null)
-            Shoot(_aim.Target.position);
+        {
+            Vector3 offset = Vector3.up / 2;
+            Shoot(_aim.Target.position + offset);
+        }
     }
 
     public void Shoot(Vector3 targetPosition)

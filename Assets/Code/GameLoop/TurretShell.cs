@@ -1,3 +1,3 @@
-public class TurretShell : Projectile
+public class TurretShell : Shell
 {
 }
