@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6064479210906169400}
   - component: {fileID: 3785547266280433788}
   - component: {fileID: 680788748430645412}
-  - component: {fileID: 8459462016650238540}
+  - component: {fileID: 3010615793373341727}
   m_Layer: 0
-  m_Name: TurretShell
+  m_Name: Shell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.57016134
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8459462016650238540
+--- !u!114 &3010615793373341727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,9 +105,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1232555256524521683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a09d65d4ea442129d17b7a4f4d789be, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c6771b4893244a991958898d880862d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 20
-  _speed: 20
+  _damage: 10
+  _speed: 50
   _lifeTime: 2

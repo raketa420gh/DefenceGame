@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
     [SerializeField] private HeroData _data;
-    [SerializeField] private Turret _turret;
+    [SerializeField] private Firearms firearms;
 
     private void Start()
     {
@@ -13,6 +12,6 @@ public class Hero : MonoBehaviour
 
     public void StartShooting()
     {
-        _turret.StartTurretShooting(_data.AttackSpeed);
+        firearms.StartTurretShooting(_data.AttackSpeed);
     }
 }

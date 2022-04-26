@@ -5084,6 +5084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8103782931462812929}
   - component: {fileID: 8162349860441715055}
+  - component: {fileID: 1484187222}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -5121,3 +5122,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _muzzle: {fileID: 8103782929693564283}
+  _shellPath: Prefabs/Shell
+--- !u!114 &1484187222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8103782931462812928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e62dd69d465fd49b71af5bcac89741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: b8997905f9c7c514a9f26cd567d05ada, type: 2}
+  firearms: {fileID: 8162349860441715055}

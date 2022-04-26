@@ -19,9 +19,9 @@ public class GameFactory : IGameFactory
         return enemy;
     }
 
-    public IProjectile CreateTurretShell(Vector3 position, Transform parent = null)
+    public IProjectile CreateShell(Vector3 position, string path = AssetPath.Shell, Transform parent = null)
     {
-        GameObject turretShell = _assetProvider.Instantiate(AssetPath.TurretShell, position, Quaternion.identity);
+        GameObject turretShell = _assetProvider.Instantiate(path, position, Quaternion.identity);
         turretShell.transform.SetParent(parent);
         IProjectile projectile = turretShell.GetComponent<IProjectile>();
         return projectile;

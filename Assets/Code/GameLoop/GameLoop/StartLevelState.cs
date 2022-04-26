@@ -3,18 +3,15 @@ public class StartLevelState : GameLoopState
     private LevelLoop _levelLoop;
     private EnemySpawner _enemySpawner;
     private EnemyDetector _enemyDetector;
-    private Turret _turret;
-    
-    public StartLevelState(GameLoop gameLoop, 
-        StateMachine stateMachine, 
-        EnemySpawner enemySpawner, 
-        EnemyDetector enemyDetector, 
-        Turret turret)
+
+    public StartLevelState(GameLoop gameLoop,
+        StateMachine stateMachine,
+        EnemySpawner enemySpawner,
+        EnemyDetector enemyDetector)
         : base(gameLoop, stateMachine)
     {
         _enemySpawner = enemySpawner;
         _enemyDetector = enemyDetector;
-        _turret = turret;
     }
 
     public override void Enter()
@@ -37,7 +34,6 @@ public class StartLevelState : GameLoopState
     private void OnLevelStarted()
     {
         _enemySpawner.StartSpawningEnemies(EnemyTier.Tier3, 1f);
-        _turret.StartTurretShooting(0.5f);
     }
 
     private void OnLevelWon()
