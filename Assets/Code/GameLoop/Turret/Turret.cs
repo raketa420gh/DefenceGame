@@ -7,18 +7,14 @@ using Zenject;
 public class Turret : MonoBehaviour, IFirearms
 {
     [SerializeField] private Transform _muzzle;
-    private TurretAim _aim;
-    private EnemyDetector _enemyDetector;
-    private IProjectile _shell;
+    private Aim _aim;
     private GameFactory _gameFactory;
 
     [Inject]
-    public void Construct(GameFactory gameFactory, EnemyDetector enemyDetector)
+    public void Construct(GameFactory gameFactory)
     {
         _gameFactory = gameFactory;
-        _enemyDetector = enemyDetector;
-        
-        _aim = GetComponentInChildren<TurretAim>();
+        _aim = GetComponentInChildren<Aim>();
     }
     
     public async Task StartTurretShooting(float period, float startDelay = 0f)

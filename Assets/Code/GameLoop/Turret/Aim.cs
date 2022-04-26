@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using Zenject;
 
-public class TurretAim : MonoBehaviour
+public class Aim : MonoBehaviour
 {
     [SerializeField] [Range(0, 180f)] private float _angle = 45f;
     [SerializeField] private float _maxTurnSpeed = 90f;
@@ -32,7 +32,7 @@ public class TurretAim : MonoBehaviour
         if (!_target)
             return;
 
-        Aim(_target.position);
+        Aiming(_target.position);
     }
 
     private void OnDrawGizmos()
@@ -75,7 +75,7 @@ public class TurretAim : MonoBehaviour
         _enemyDetector.OnEnemyUnobserved -= OnEnemyUnobserved;
     }
 
-    private void Aim(Vector3 targetPoint)
+    private void Aiming(Vector3 targetPoint)
     {
         var turret = transform;
         var hardpoint = turret.parent;
