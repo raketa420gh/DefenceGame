@@ -16,4 +16,4 @@ MonoBehaviour:
   PrefabPath: Prefabs/TestWarrior
   Tier: 3
   Health: 50
-  MoveSpeed: 0.8
+  MoveSpeed: 0.9

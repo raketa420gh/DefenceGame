@@ -16,4 +16,4 @@ MonoBehaviour:
   PrefabPath: Prefabs/TestHunter
   Tier: 3
   Health: 40
-  MoveSpeed: 0.9
+  MoveSpeed: 1

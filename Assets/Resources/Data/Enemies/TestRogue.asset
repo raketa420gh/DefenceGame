@@ -16,4 +16,4 @@ MonoBehaviour:
   PrefabPath: Prefabs/TestRogue
   Tier: 3
   Health: 30
-  MoveSpeed: 1
+  MoveSpeed: 1.2
