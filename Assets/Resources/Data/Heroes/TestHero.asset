@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TestHero
   m_EditorClassIdentifier: 
   Damage: 10
-  AttackSpeed: 60
+  AttackSpeed: 0.5
   Ability: {fileID: 0}

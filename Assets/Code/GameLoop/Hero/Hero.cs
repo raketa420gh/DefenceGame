@@ -1,17 +1,23 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Firearms))]
 public class Hero : MonoBehaviour
 {
     [SerializeField] private HeroData _data;
-    [SerializeField] private Firearms firearms;
+    private Firearms _firearms;
+
+    private void Awake()
+    {
+        _firearms = GetComponent<Firearms>();
+    }
 
     private void Start()
     {
         StartShooting();
     }
 
-    public void StartShooting()
+    private void StartShooting()
     {
-        firearms.StartTurretShooting(_data.AttackSpeed);
+        _firearms.StartTurretShooting(_data.AttackSpeed);
     }
 }

@@ -678,7 +678,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: eae26472268820846bff036cb4ad6031, type: 2}
-  firearms: {fileID: 7675725374913584261}
 --- !u!114 &7675725374913584261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,6 +692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _muzzle: {fileID: 7675725376608988809}
   _shellPath: Prefabs/Shell
+  _aim: {fileID: 7675725375063354419}
 --- !u!1 &7675725375063354421
 GameObject:
   m_ObjectHideFlags: 0

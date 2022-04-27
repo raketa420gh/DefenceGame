@@ -5123,6 +5123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _muzzle: {fileID: 8103782929693564283}
   _shellPath: Prefabs/Shell
+  _aim: {fileID: 8103782929610812766}
 --- !u!114 &1484187222
 MonoBehaviour:
   m_ObjectHideFlags: 0

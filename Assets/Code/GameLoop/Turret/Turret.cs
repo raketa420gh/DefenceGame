@@ -1,45 +1,17 @@
-using System;
-using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
-using Zenject;
 
-public class Turret : MonoBehaviour, IFirearms
+public class Turret : MonoBehaviour
 {
-    [SerializeField] private Transform _muzzle;
-    private Aim _aim;
-    private GameFactory _gameFactory;
+    [SerializeField] private TurretData _data;
+    [SerializeField] private Firearms firearms;
 
-    [Inject]
-    public void Construct(GameFactory gameFactory)
+    private void Start()
     {
-        _gameFactory = gameFactory;
-        _aim = GetComponentInChildren<Aim>();
-    }
-    
-    public async Task StartTurretShooting(float period, float startDelay = 0f)
-    {
-        await UniTask.Delay(TimeSpan.FromSeconds(startDelay));
-
-        while (true)
-        {
-            ShootToTarget();
-            await UniTask.Delay(TimeSpan.FromSeconds(period));
-        }
+        StartShooting();
     }
 
-    private void ShootToTarget()
+    public void StartShooting()
     {
-        if (_aim.Target != null)
-        {
-            Vector3 offset = Vector3.up / 2;
-            Shoot(_aim.Target.position + offset);
-        }
-    }
-
-    public void Shoot(Vector3 targetPosition)
-    {
-        IProjectile projectile = _gameFactory.CreateTurretShell(_muzzle.position);
-        projectile.SetTarget(targetPosition);
+        firearms.StartTurretShooting(_data.AttackSpeed);
     }
 }

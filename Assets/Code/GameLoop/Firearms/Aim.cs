@@ -5,7 +5,7 @@ using Zenject;
 public class Aim : MonoBehaviour
 {
     [SerializeField] [Range(0, 180f)] private float _angle = 45f;
-    [SerializeField] private float _maxTurnSpeed = 90f;
+    [SerializeField] private float _maxTurnSpeed = 100f;
     private EnemyDetector _enemyDetector;
     private Transform _target;
     private Enemy _currentEnemyTarget;

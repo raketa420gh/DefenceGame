@@ -8,16 +8,15 @@ public class Firearms : MonoBehaviour, IFirearms
 {
     [SerializeField] private Transform _muzzle;
     [SerializeField] private string _shellPath;
-    private Aim _aim;
+    [SerializeField] private Aim _aim;
     private GameFactory _gameFactory;
 
     [Inject]
     public void Construct(GameFactory gameFactory)
     {
         _gameFactory = gameFactory;
-        _aim = GetComponentInChildren<Aim>();
     }
-    
+
     public async Task StartTurretShooting(float period, float startDelay = 0f)
     {
         await UniTask.Delay(TimeSpan.FromSeconds(startDelay));
@@ -36,6 +35,8 @@ public class Firearms : MonoBehaviour, IFirearms
             Vector3 offset = Vector3.up / 2;
             Shoot(_aim.Target.position + offset);
         }
+        else
+            Debug.Log($"{gameObject} aim = null");
     }
 
     public void Shoot(Vector3 targetPosition)
