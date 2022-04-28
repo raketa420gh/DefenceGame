@@ -9,5 +9,7 @@ public class SquadSlot : MonoBehaviour
     {
         _currentHero = hero;
         isEmpty = false;
+
+        hero.transform.position = transform.position;
     }
 }

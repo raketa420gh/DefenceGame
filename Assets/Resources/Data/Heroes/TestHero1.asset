@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ff2712ab9e400aa0004c87f01c1cbd, type: 3}
   m_Name: TestHero1
   m_EditorClassIdentifier: 
-  PrefabPath: Prefabs/TestHero2
+  PrefabPath: Prefabs/HeroTest1
   Damage: 10
   AttackSpeed: 0.5
   Ability: {fileID: 0}
