@@ -643,7 +643,7 @@ GameObject:
   - component: {fileID: 7675725374913584263}
   - component: {fileID: 7675725374913584261}
   m_Layer: 0
-  m_Name: Hero
+  m_Name: HeroTest2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f359921394c440eb5fe93f19856ad97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: eae26472268820846bff036cb4ad6031, type: 2}
+  _data: {fileID: 11400000, guid: 2f4ef7a0447df114098b7e7640d07b82, type: 2}
 --- !u!114 &7675725374913584261
 MonoBehaviour:
   m_ObjectHideFlags: 0

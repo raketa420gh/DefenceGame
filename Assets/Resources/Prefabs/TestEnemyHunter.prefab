@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -8792318133318154995}
   - component: {fileID: 2806406307709829206}
   m_Layer: 0
-  m_Name: TestHunter
+  m_Name: TestEnemyHunter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
