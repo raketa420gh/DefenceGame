@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestRogue
   m_EditorClassIdentifier: 
   Name: TestRogue
-  PrefabPath: Prefabs/TestRogue
+  PrefabPath: Prefabs/TestEnemyRogue
   Tier: 3
   Health: 30
   MoveSpeed: 1.2

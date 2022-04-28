@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestWarrior
   m_EditorClassIdentifier: 
   Name: TestWarrior
-  PrefabPath: Prefabs/TestWarrior
+  PrefabPath: Prefabs/TestEnemyWarrior
   Tier: 3
   Health: 50
   MoveSpeed: 0.9

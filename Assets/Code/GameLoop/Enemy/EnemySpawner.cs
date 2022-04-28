@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<EnemyType> _enemyTypes;
     private GameFactory _gameFactory;
     int _enemyID;
+    
 
     [Inject]
     public void Construct(GameFactory gameFactory)
