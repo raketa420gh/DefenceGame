@@ -16,7 +16,7 @@ public class Firearms : MonoBehaviour, IFirearms
     {
         _gameFactory = gameFactory;
     }
-
+    
     public async Task StartTurretShooting(float period, float startDelay = 0f)
     {
         await UniTask.Delay(TimeSpan.FromSeconds(startDelay));

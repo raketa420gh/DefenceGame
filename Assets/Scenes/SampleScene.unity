@@ -6104,7 +6104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5123a2ae3f994a388e1b8e1fd4ee07aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _testHeroData: {fileID: 11400000, guid: eae26472268820846bff036cb4ad6031, type: 2}
+  _testHero: {fileID: 7675725374913584263, guid: 8cb5e76413318e942920b19f8c5d1434, type: 3}
   _slots:
   - {fileID: 495299903}
   - {fileID: 1410984984}
@@ -11189,10 +11189,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 2127320457}
   - {fileID: 2127320458}
   - {fileID: 2127320455}
   - {fileID: 2127320456}
+  - {fileID: 2127320457}
   - {fileID: 2127320454}
   _installerPrefabs: []
   _autoRun: 1
