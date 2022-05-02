@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0f04d59269499c9b7a4c604fb66363, type: 3}
   m_Name: Turret
   m_EditorClassIdentifier: 
+  PrefabPath: Prefabs/Turret
   Damage: 15
   AttackSpeed: 1

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SquadSlot : MonoBehaviour
+public class SquadHeroSlot : MonoBehaviour
 {
     private Hero _currentHero;
     private bool isEmpty = true;
@@ -11,5 +11,6 @@ public class SquadSlot : MonoBehaviour
         isEmpty = false;
 
         hero.transform.position = transform.position;
+        hero.transform.parent = transform;
     }
 }

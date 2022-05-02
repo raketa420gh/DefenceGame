@@ -27,6 +27,14 @@ public class GameFactory : IGameFactory
         return hero;
     }
 
+    public Turret CreateTurret(TurretData turretData, Vector3 position, Transform parent = null)
+    {
+        GameObject turretGameObject = _assetProvider.Instantiate(turretData.PrefabPath, position, Quaternion.identity);
+        turretGameObject.transform.SetParent(parent);
+        Turret turret = turretGameObject.GetComponent<Turret>();
+        return turret;
+    }
+
     public IProjectile CreateShell(Vector3 position, string path = AssetPath.Shell, Transform parent = null)
     {
         GameObject turretShell = _assetProvider.Instantiate(path, position, Quaternion.identity);
