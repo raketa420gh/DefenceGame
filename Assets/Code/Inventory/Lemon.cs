@@ -1,12 +1,12 @@
 using System;
 
-public class Apple : IInventoryItem
+public class Lemon : IInventoryItem
 {
     public IInventoryItemInfo Info { get; }
     public IInventoryItemState State { get; }
     public Type Type => GetType();
-
-    public Apple(IInventoryItemInfo info)
+    
+    public Lemon(IInventoryItemInfo info)
     {
         Info = info;
         State = new InventoryItemState();
@@ -14,8 +14,8 @@ public class Apple : IInventoryItem
     
     public IInventoryItem Clone()
     {
-        var clonedApple = new Apple(Info);
-        clonedApple.State.Amount = State.Amount;
-        return clonedApple;
+        var clonedLemon = new Lemon(Info);
+        clonedLemon.State.Amount = State.Amount;
+        return clonedLemon;
     }
 }

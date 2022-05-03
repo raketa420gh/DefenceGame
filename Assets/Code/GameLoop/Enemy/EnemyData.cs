@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemies/Enemy", fileName = "Enemy", order = 51)]
-public class EnemyType : ScriptableObject
+[CreateAssetMenu(menuName = "Units/Enemy", fileName = "Enemy", order = 51)]
+public class EnemyData : ScriptableObject
 {
     public string Name;
     public string PrefabPath;

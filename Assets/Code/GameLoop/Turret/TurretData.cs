@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Turrets/Turret", fileName = "Turret", order = 53)]
+[CreateAssetMenu(menuName = "Units/Turret", fileName = "Turret", order = 53)]
 
 public class TurretData : ScriptableObject
 {

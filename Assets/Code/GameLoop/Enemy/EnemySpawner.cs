@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private List<SpawnPoint> _spawnPoints;
-    [SerializeField] private List<EnemyType> _enemyTypes;
+    [SerializeField] private List<EnemyData> _enemyTypes;
     private GameFactory _gameFactory;
     int _enemyID;
     
@@ -35,19 +35,19 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemyInRandomSpawnPoint(EnemyTier enemyTier)
     {
-        List<EnemyType> enemyTypes = _enemyTypes.Where(enemyType => enemyType.Tier == enemyTier).ToList();
+        List<EnemyData> enemyTypes = _enemyTypes.Where(enemyType => enemyType.Tier == enemyTier).ToList();
 
         int randomIndex = Random.Range(0, enemyTypes.Count);
-        EnemyType randomEnemyType = enemyTypes[randomIndex];
+        EnemyData randomEnemyData = enemyTypes[randomIndex];
 
         _enemyID++;
-        Enemy enemy = SpawnEnemy(randomEnemyType, GetRandomSpawnPoint());
-        enemy.gameObject.name = $"{randomEnemyType.Name} {_enemyID}";
+        Enemy enemy = SpawnEnemy(randomEnemyData, GetRandomSpawnPoint());
+        enemy.gameObject.name = $"{randomEnemyData.Name} {_enemyID}";
     }
 
-    private Enemy SpawnEnemy(EnemyType enemyType, SpawnPoint point)
+    private Enemy SpawnEnemy(EnemyData enemyData, SpawnPoint point)
     {
-        return _gameFactory.CreateEnemy(enemyType, point.Position);
+        return _gameFactory.CreateEnemy(enemyData, point.Position);
     }
 
     private SpawnPoint GetRandomSpawnPoint()

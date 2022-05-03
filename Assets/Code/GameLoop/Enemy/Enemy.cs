@@ -6,17 +6,17 @@ public class Enemy : MonoBehaviour
 {
     public event Action<Enemy> OnDead;
 
-    [SerializeField] private EnemyType _enemyType;
+    [SerializeField] private EnemyData enemyData;
     [SerializeField] private AIPath _aiPath;
     [SerializeField] private Seeker _seeker;
     private Health _health;
     
     private void Awake()
     {
-        _aiPath.maxSpeed = _enemyType.MoveSpeed;
+        _aiPath.maxSpeed = enemyData.MoveSpeed;
         _health = GetComponent<Health>();
         
-        _health.Setup(_enemyType.Health);
+        _health.Setup(enemyData.Health);
 
         _health.OnOver += OnHealthOver;
     }

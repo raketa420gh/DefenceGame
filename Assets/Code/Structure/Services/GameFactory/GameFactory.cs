@@ -11,9 +11,9 @@ public class GameFactory : IGameFactory
         _assetProvider = assetProvider;
     }
 
-    public Enemy CreateEnemy(EnemyType enemyType, Vector3 position, Transform parent = null)
+    public Enemy CreateEnemy(EnemyData enemyData, Vector3 position, Transform parent = null)
     {
-        GameObject enemyObject = _assetProvider.Instantiate(enemyType.PrefabPath, position, Quaternion.identity);
+        GameObject enemyObject = _assetProvider.Instantiate(enemyData.PrefabPath, position, Quaternion.identity);
         enemyObject.transform.SetParent(parent);
         Enemy enemy = enemyObject.GetComponent<Enemy>();
         return enemy;

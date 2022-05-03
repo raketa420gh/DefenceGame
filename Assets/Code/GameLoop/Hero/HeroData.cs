@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Heroes/Hero", fileName = "Hero", order = 52)]
+[CreateAssetMenu(menuName = "Units/Hero", fileName = "Hero", order = 52)]
 
 public class HeroData : ScriptableObject
 {
