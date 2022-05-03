@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17ff2712ab9e400aa0004c87f01c1cbd, type: 3}
-  m_Name: TestHero1
+  m_Name: Hero2
   m_EditorClassIdentifier: 
-  PrefabPath: Prefabs/HeroTest1
-  Damage: 10
-  AttackSpeed: 0.5
-  Ability: {fileID: 0}
+  _id: 992
+  _title: 
+  _description: 
+  _icon: {fileID: 21300000, guid: 8288197d4cf575a499c5613c737afc30, type: 3}
+  _prefabPath: Prefabs/Hero2
+  _damage: 2
+  _attackSpeed: 50

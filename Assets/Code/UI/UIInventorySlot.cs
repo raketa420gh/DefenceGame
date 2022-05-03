@@ -6,9 +6,9 @@ public class UIInventorySlot : UISlot
     [SerializeField] private UIInventoryItem _uiInventoryItem;
     public IInventorySlot Slot { get; private set; }
 
-    private UIInventory _uiInventory;
+    private UISquadInventory _uiInventory;
 
-    private void Awake() => _uiInventory = GetComponentInParent<UIInventory>();
+    private void Awake() => _uiInventory = GetComponentInParent<UISquadInventory>();
 
     public override void OnDrop(PointerEventData eventData)
     {
