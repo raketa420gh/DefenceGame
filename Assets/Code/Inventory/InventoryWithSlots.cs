@@ -131,7 +131,9 @@ public class InventoryWithSlots : IInventory
         return item != null;
     }
 
-    private bool TryToAddToSlot(object sender, IInventorySlot slot, IInventoryItem item)
+    public IInventorySlot[] GetAllSlots() => _slots.ToArray();
+
+    public bool TryToAddToSlot(object sender, IInventorySlot slot, IInventoryItem item)
     {
         var fits = slot.Amount + item.State.Amount <= item.Info.MaxItemsInInventorySlot;
         var amountToAdd = fits ? item.State.Amount : item.Info.MaxItemsInInventorySlot - slot.Amount;

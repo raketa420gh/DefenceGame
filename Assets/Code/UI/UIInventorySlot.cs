@@ -29,7 +29,7 @@ public class UIInventorySlot : UISlot
         Slot = newSlot;
     }
 
-    private void Refresh()
+    public void Refresh()
     {
         if (Slot != null)
             _uiInventoryItem.Refresh(Slot);
