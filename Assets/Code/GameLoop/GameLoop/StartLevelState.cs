@@ -39,7 +39,7 @@ public class StartLevelState : GameLoopState
     private void OnLevelStarted()
     {
         _squadFormation.LoadSquadPreset();
-        _enemySpawner.StartSpawningEnemies(EnemyTier.Tier3, 0.5f);
+        //_enemySpawner.StartSpawningEnemies(EnemyTier.Tier3, 0.5f);
     }
 
     private void OnLevelWon()
