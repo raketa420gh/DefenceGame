@@ -147,6 +147,7 @@ public class InventoryWithSlots : IInventory
             return true;
 
         item.State.Amount = amountLeft;
+        
         return TryToAdd(sender, item);
     }
 

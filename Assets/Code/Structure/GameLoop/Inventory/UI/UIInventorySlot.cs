@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UIInventorySlot : UISlot
 {
+    public event Action<IInventoryItem, IInventorySlot> OnDroppedItemToSlot;
     [SerializeField] private UIInventoryItem _uiInventoryItem;
     public IInventorySlot Slot { get; private set; }
 
@@ -22,6 +24,8 @@ public class UIInventorySlot : UISlot
         inventory.TransitFromSlotToSlot(this, otherSlot, Slot);
         Refresh();
         otherUISlot.Refresh();
+        
+        OnDroppedItemToSlot?.Invoke(Slot.Item, Slot);
     }
     
     public void SetSlot(IInventorySlot newSlot)
