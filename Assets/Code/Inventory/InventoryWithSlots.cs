@@ -63,7 +63,6 @@ public class InventoryWithSlots : IInventory
     {
         if (fromSlot.IsEmpty)
             return;
-
         if (toSlot.IsFull)
             return;
         if (!toSlot.IsEmpty && fromSlot.ItemType != toSlot.ItemType)
@@ -90,7 +89,6 @@ public class InventoryWithSlots : IInventory
             fromSlot.Item.State.Amount = amountLeft;
         
         OnInventoryStateChanged?.Invoke(sender);
-        
     }
 
     public void Remove(object sender, Type itemType, int amount = 1)

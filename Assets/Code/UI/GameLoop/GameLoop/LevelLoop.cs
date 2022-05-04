@@ -16,19 +16,19 @@ public class LevelLoop
 
     public void StartLevel()
     {
-        Debug.Log($"OnLevelStarted");
+        //Debug.Log($"OnLevelStarted");
         OnLevelStarted?.Invoke();
     }
 
     public void Win()
     {
-        Debug.Log($"OnLevelWon");
+        //Debug.Log($"OnLevelWon");
         OnLevelWon?.Invoke();
     }
 
     public void Lose()
     {
-        Debug.Log($"OnLevelLosed");
+        //Debug.Log($"OnLevelLosed");
         OnLevelLose?.Invoke();
     }
 }

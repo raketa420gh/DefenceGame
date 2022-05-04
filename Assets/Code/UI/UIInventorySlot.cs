@@ -22,6 +22,8 @@ public class UIInventorySlot : UISlot
         inventory.TransitFromSlotToSlot(this, otherSlot, Slot);
         Refresh();
         otherUISlot.Refresh();
+        
+        //Debug.Log($"ToSlot {Slot} IsEmpty = {Slot.IsEmpty}, From {otherSlot} IsEmpty = {otherSlot.IsEmpty}");
     }
     
     public void SetSlot(IInventorySlot newSlot)

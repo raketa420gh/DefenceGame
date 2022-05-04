@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class GameLoopState : BaseState
 {
     protected GameLoop gameLoop;
@@ -9,11 +7,5 @@ public class GameLoopState : BaseState
     {
         this.gameLoop = gameLoop;
         this.stateMachine = stateMachine;
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
-        Debug.Log($"Start {stateMachine.CurrentState} state");
     }
 }

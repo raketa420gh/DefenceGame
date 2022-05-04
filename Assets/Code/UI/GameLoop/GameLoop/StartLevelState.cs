@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class StartLevelState : GameLoopState
 {
     private LevelLoop _levelLoop;
@@ -33,12 +31,12 @@ public class StartLevelState : GameLoopState
         _levelLoop.OnLevelWon += OnLevelWon;
         _levelLoop.OnLevelLose += OnLevelLose;
         
-        _levelLoop.StartLevel();
+        //_levelLoop.StartLevel();
     }
     
     private void OnLevelStarted()
     {
-        _squadFormation.LoadSquadPreset();
+        //_squadFormation.LoadSquadPreset();
         //_enemySpawner.StartSpawningEnemies(EnemyTier.Tier3, 0.5f);
     }
 
