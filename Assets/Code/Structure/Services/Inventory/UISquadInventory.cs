@@ -1,12 +1,15 @@
+using System;
 using System.Collections.Generic;
 
-public class UIInventoryHandler
+public class UISquadInventory
 {
+    public event Action<HeroData, IInventorySlot> OnAddedHeroToSquadSlot;
+    
     private UIInventorySlot[] _uiSlots;
     
     public InventoryWithSlots Inventory { get; }
 
-    public UIInventoryHandler(UIInventorySlot[] uiSlots, int capacity)
+    public UISquadInventory(UIInventorySlot[] uiSlots, int capacity)
     {
         _uiSlots = uiSlots;
 
@@ -14,7 +17,7 @@ public class UIInventoryHandler
         Inventory.OnInventoryStateChanged += OnInventoryStateChanged;
     }
 
-    public void FillHeroSlot(HeroData heroData, int index)
+    public IInventorySlot FillHeroSlot(HeroData heroData, int index)
     {
         var allSlots = Inventory.GetAllSlots();
         var availableSlots = new List<IInventorySlot>(allSlots);
@@ -23,13 +26,17 @@ public class UIInventoryHandler
         availableSlots.Remove(heroSlot);
         
         SetupInventoryUI(Inventory);
+
+        return heroSlot;
     }
 
     private IInventorySlot AddHeroIntoSlot(HeroData heroData, List<IInventorySlot> slots, int slotIndex)
     {
         var heroInfo = new HeroInventoryItem(heroData);
         var slot = slots[slotIndex];
-        Inventory.TryToAddToSlot(heroData, slot, heroInfo);
+
+        if (Inventory.TryToAddToSlot(heroData, slot, heroInfo))
+            OnAddedHeroToSquadSlot?.Invoke(heroData, slot);
 
         return slot;
     }

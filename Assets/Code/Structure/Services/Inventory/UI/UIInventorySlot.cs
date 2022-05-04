@@ -6,9 +6,9 @@ public class UIInventorySlot : UISlot
     [SerializeField] private UIInventoryItem _uiInventoryItem;
     public IInventorySlot Slot { get; private set; }
 
-    private UISquadInventory _uiInventory;
+    private UISquadInventoryController _uiInventoryController;
 
-    private void Awake() => _uiInventory = GetComponentInParent<UISquadInventory>();
+    private void Awake() => _uiInventoryController = GetComponentInParent<UISquadInventoryController>();
 
     public override void OnDrop(PointerEventData eventData)
     {
@@ -17,13 +17,11 @@ public class UIInventorySlot : UISlot
         var otherUIItem = eventData.pointerDrag.GetComponent<UIInventoryItem>();
         var otherUISlot = otherUIItem.GetComponentInParent<UIInventorySlot>();
         var otherSlot = otherUISlot.Slot;
-        var inventory = _uiInventory.Inventory;
+        var inventory = _uiInventoryController.Inventory;
         
         inventory.TransitFromSlotToSlot(this, otherSlot, Slot);
         Refresh();
         otherUISlot.Refresh();
-        
-        //Debug.Log($"ToSlot {Slot} IsEmpty = {Slot.IsEmpty}, From {otherSlot} IsEmpty = {otherSlot.IsEmpty}");
     }
     
     public void SetSlot(IInventorySlot newSlot)

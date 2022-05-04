@@ -9,7 +9,7 @@ public class InventoryItemState : IInventoryItemState
     public int Amount { get => ItemAmount; set => ItemAmount = value; }
     public bool IsEquipped { get => IsItemEquipped; set => IsItemEquipped = value; }
 
-    public InventoryItemState()
+    public InventoryItemState(int itemAmount = 0, bool isEquipped = false)
     {
         ItemAmount = 0;
         IsItemEquipped = false;

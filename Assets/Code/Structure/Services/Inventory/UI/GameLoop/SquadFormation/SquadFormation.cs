@@ -18,29 +18,23 @@ public class SquadFormation : MonoBehaviour
 
     public void SaveHeroesPreset()
     {
-        //_slots[0].SetHero();
-        //_slots[1].SetHero();
-        //_slots[2].SetHero();
-        //_slots[3].SetHero();
     }
 
     public void LoadSquadPreset()
     {
-        var hero1 = _gameFactory.CreateHero(_testHeroData1, Vector3.zero);
-        var hero2 = _gameFactory.CreateHero(_testHeroData2, Vector3.zero);
-        var turret = _gameFactory.CreateTurret(_testTurretData, Vector3.zero);
-        SetHeroToSlot(hero1, _heroSlots[0]);
-        SetHeroToSlot(hero2, _heroSlots[1]);
-        SetTurretToSlot(turret, _turretSlot);
+        SetHeroToSlot(_testHeroData1, 0);
+        SetTurretToSlot(_testTurretData, _turretSlot);
     }
 
-    private void SetHeroToSlot(Hero hero, SquadHeroSlot heroSlot)
+    public void SetHeroToSlot(HeroData heroData, int slotIndex)
     {
-        heroSlot.SetHero(hero);
+        var hero = _gameFactory.CreateHero(heroData, Vector3.zero);
+        _heroSlots[slotIndex].SetHero(hero);
     }
 
-    private void SetTurretToSlot(Turret turret, SquadTurretSlot turretSlot)
+    public void SetTurretToSlot(TurretData turretData, SquadTurretSlot turretSlot)
     {
+        var turret = _gameFactory.CreateTurret(turretData, Vector3.zero);
         turretSlot.SetTurret(turret);
     }
 }

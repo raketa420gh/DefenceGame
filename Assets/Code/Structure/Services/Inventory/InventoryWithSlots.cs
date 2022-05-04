@@ -77,7 +77,6 @@ public class InventoryWithSlots : IInventory
         {
             toSlot.SetItem(fromSlot.Item);
             fromSlot.Clear();
-            
             OnInventoryStateChanged?.Invoke(sender);
         }
         
@@ -87,7 +86,6 @@ public class InventoryWithSlots : IInventory
             fromSlot.Clear();
         else
             fromSlot.Item.State.Amount = amountLeft;
-        
         OnInventoryStateChanged?.Invoke(sender);
     }
 
@@ -129,8 +127,6 @@ public class InventoryWithSlots : IInventory
         return item != null;
     }
 
-    public IInventorySlot[] GetAllSlots() => _slots.ToArray();
-
     public bool TryToAddToSlot(object sender, IInventorySlot slot, IInventoryItem item)
     {
         var fits = slot.Amount + item.State.Amount <= item.Info.MaxItemsInInventorySlot;
@@ -153,6 +149,8 @@ public class InventoryWithSlots : IInventory
         item.State.Amount = amountLeft;
         return TryToAdd(sender, item);
     }
+
+    public IInventorySlot[] GetAllSlots() => _slots.ToArray();
 
     private IInventorySlot[] GetAllSlots(Type itemType) => _slots.FindAll(slot => !slot.IsEmpty && slot.ItemType == itemType).ToArray();
 }

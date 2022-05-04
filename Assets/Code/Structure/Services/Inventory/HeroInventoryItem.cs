@@ -9,7 +9,7 @@ public class HeroInventoryItem : IInventoryItem
     public HeroInventoryItem(IInventoryItemInfo info)
     {
         Info = info;
-        State = new InventoryItemState();
+        State = new InventoryItemState(1);
     }
     
     public IInventoryItem Clone()
