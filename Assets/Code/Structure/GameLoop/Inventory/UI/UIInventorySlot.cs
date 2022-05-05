@@ -1,16 +1,14 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UIInventorySlot : UISlot
 {
-    public event Action<IInventoryItem, IInventorySlot> OnDroppedItemToSlot;
     [SerializeField] private UIInventoryItem _uiInventoryItem;
     public IInventorySlot Slot { get; private set; }
 
-    private UISquadInventoryController _uiInventoryController;
+    private SquadInventory _inventory;
 
-    private void Awake() => _uiInventoryController = GetComponentInParent<UISquadInventoryController>();
+    private void Awake() => _inventory = GetComponentInParent<SquadInventory>();
 
     public override void OnDrop(PointerEventData eventData)
     {
@@ -19,13 +17,11 @@ public class UIInventorySlot : UISlot
         var otherUIItem = eventData.pointerDrag.GetComponent<UIInventoryItem>();
         var otherUISlot = otherUIItem.GetComponentInParent<UIInventorySlot>();
         var otherSlot = otherUISlot.Slot;
-        var inventory = _uiInventoryController.Inventory;
+        var inventory = _inventory.Inventory;
         
         inventory.TransitFromSlotToSlot(this, otherSlot, Slot);
         Refresh();
         otherUISlot.Refresh();
-        
-        OnDroppedItemToSlot?.Invoke(Slot.Item, Slot);
     }
     
     public void SetSlot(IInventorySlot newSlot)

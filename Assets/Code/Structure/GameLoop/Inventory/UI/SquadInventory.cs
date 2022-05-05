@@ -1,22 +1,22 @@
 using UnityEngine;
 
-public class UISquadInventoryController : MonoBehaviour
+public class SquadInventory : MonoBehaviour
 {
     [SerializeField] private UIInventorySlot[] _uiHeroSlots;
     [SerializeField] private HeroData _hero1Data;
     [SerializeField] private HeroData _hero2Data;
 
     private readonly UIInventorySlot[] _uiSquadHeroSlots = new UIInventorySlot[4];
-    private UISquadInventory _squadInventory;
+    private UISquadInventory _uiSquadInventory;
     private SquadFormation _squadFormation;
 
-    public InventoryWithSlots Inventory => _squadInventory.Inventory;
+    public InventoryWithSlots Inventory => _uiSquadInventory.Inventory;
 
     private void Start()
     {
-        _squadInventory = new UISquadInventory(_uiHeroSlots, 16);
-        _squadInventory.FillHeroSlot(_hero1Data, 4);
-        _squadInventory.FillHeroSlot(_hero2Data, 5);
+        _uiSquadInventory = new UISquadInventory(_uiHeroSlots, 16);
+        _uiSquadInventory.FillHeroSlot(_hero1Data, 4);
+        _uiSquadInventory.FillHeroSlot(_hero2Data, 5);
         
         _uiSquadHeroSlots[0] = _uiHeroSlots[0];
         _uiSquadHeroSlots[1] = _uiHeroSlots[1];
@@ -25,13 +25,19 @@ public class UISquadInventoryController : MonoBehaviour
 
         foreach (var slot in _uiHeroSlots)
         {
-            slot.OnDroppedItemToSlot += OnDroppedItemToSlot;
             if (slot.Slot.Item != null)
                 Debug.Log(
                     $"Slot name {slot.transform.name}. Slot Item {slot.Slot.Item}. Slot IsEmpty {slot.Slot.IsEmpty}.");
             else
                 Debug.Log($"Slot name {slot.transform.name} .Slot IsEmpty {slot.Slot.IsEmpty}.");
         }
+        
+        _uiSquadInventory.SetupInventoryUI(_uiSquadInventory.Inventory);
+    }
+
+    private void OnItemSettedToSlot(IInventoryItem item)
+    {
+        Debug.Log($"Dropped {item}");
     }
 
     private void OnDroppedItemToSlot(IInventoryItem item, IInventorySlot slot)

@@ -2,6 +2,8 @@ using System;
 
 public class InventorySlot : IInventorySlot
 {
+    public event Action<IInventoryItem> OnItemSettedToSlot;
+    
     public bool IsFull => !IsEmpty && Amount == Capacity;
     public bool IsEmpty => Item == null;
     public IInventoryItem Item { get; private set; }
@@ -16,6 +18,8 @@ public class InventorySlot : IInventorySlot
 
         Item = item;
         Capacity = item.Info.MaxItemsInInventorySlot;
+        
+        OnItemSettedToSlot?.Invoke(item);
     }
 
     public void Clear()

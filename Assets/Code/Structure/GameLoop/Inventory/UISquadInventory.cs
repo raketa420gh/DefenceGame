@@ -18,13 +18,8 @@ public class UISquadInventory
 
     public IInventorySlot FillHeroSlot(HeroData heroData, int index)
     {
-        var allSlots = Inventory.GetAllSlots();
-        var availableSlots = new List<IInventorySlot>(allSlots);
-        
-        var heroSlot = AddHeroIntoSlot(heroData, availableSlots, index);
-        availableSlots.Remove(heroSlot);
-        
-        SetupInventoryUI(Inventory);
+        var allSlots = new List<IInventorySlot>(Inventory.GetAllSlots());
+        var heroSlot = AddHeroIntoSlot(heroData, allSlots, index);
 
         return heroSlot;
     }
@@ -39,7 +34,7 @@ public class UISquadInventory
         return slot;
     }
 
-    private void SetupInventoryUI(InventoryWithSlots inventory)
+    public void SetupInventoryUI(InventoryWithSlots inventory)
     {
         var allSlots = inventory.GetAllSlots();
         var allSlotsCount = allSlots.Length;
