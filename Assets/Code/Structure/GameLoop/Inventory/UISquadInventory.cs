@@ -26,7 +26,7 @@ public class UISquadInventory
 
     private IInventorySlot AddHeroIntoSlot(HeroData heroData, List<IInventorySlot> slots, int slotIndex)
     {
-        var heroInfo = new HeroInventoryItem(heroData);
+        var heroInfo = new InventoryItem(heroData);
         var slot = slots[slotIndex];
 
         Inventory.TryToAddToSlot(heroData, slot, heroInfo);

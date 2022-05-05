@@ -2,7 +2,7 @@ using System;
 
 public class InventorySlot : IInventorySlot
 {
-    public event Action<IInventoryItem> OnItemSettedToSlot;
+    public event Action<IInventoryItem> OnItemSet;
     
     public bool IsFull => !IsEmpty && Amount == Capacity;
     public bool IsEmpty => Item == null;
@@ -19,7 +19,7 @@ public class InventorySlot : IInventorySlot
         Item = item;
         Capacity = item.Info.MaxItemsInInventorySlot;
         
-        OnItemSettedToSlot?.Invoke(item);
+        OnItemSet?.Invoke(item);
     }
 
     public void Clear()
