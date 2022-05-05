@@ -2,7 +2,7 @@ using Zenject;
 
 public class SquadFormationInstaller : MonoInstaller
 {
-    public SquadFormation SquadFormation;
+    public SquadFormater squadFormater;
         
     public override void InstallBindings()
     {
@@ -12,7 +12,7 @@ public class SquadFormationInstaller : MonoInstaller
     private void BindSquadFormation()
     {
         Container
-            .Bind<SquadFormation>()
-            .FromInstance(SquadFormation);
+            .Bind<SquadFormater>()
+            .FromInstance(squadFormater);
     }
 }

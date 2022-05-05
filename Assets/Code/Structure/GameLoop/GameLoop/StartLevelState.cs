@@ -1,18 +1,18 @@
 public class StartLevelState : GameLoopState
 {
     private LevelLoop _levelLoop;
-    private SquadFormation _squadFormation;
+    private SquadFormater _squadFormater;
     private EnemySpawner _enemySpawner;
     private EnemyDetector _enemyDetector;
 
     public StartLevelState(GameLoop gameLoop,
         StateMachine stateMachine,
-        SquadFormation squadFormation,
+        SquadFormater squadFormater,
         EnemySpawner enemySpawner,
         EnemyDetector enemyDetector)
         : base(gameLoop, stateMachine)
     {
-        _squadFormation = squadFormation;
+        _squadFormater = squadFormater;
         _enemySpawner = enemySpawner;
         _enemyDetector = enemyDetector;
     }

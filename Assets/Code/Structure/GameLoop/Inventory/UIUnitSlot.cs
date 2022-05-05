@@ -5,11 +5,9 @@ public class UIUnitSlot : MonoBehaviour
 {
     [SerializeField] private UIUnitItem _uiInventoryItem;
     private Button _button;
-    private bool _isSelected;
 
     public IInventorySlot Slot { get; private set; }
     public Button Button => _button;
-    public bool IsSelected => _isSelected;
 
     private void Awake()
     {

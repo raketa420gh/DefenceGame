@@ -8,14 +8,14 @@ public class GameLoop : MonoBehaviour
     public StartLevelState StartLevelState;
     public EndLevelState EndLevelState;
 
-    private SquadFormation _squadFormation;
+    private SquadFormater _squadFormater;
     private EnemySpawner _enemySpawner;
     private EnemyDetector _enemyDetector;
 
     [Inject]
-    public void Construct(SquadFormation squadFormation, EnemySpawner enemySpawner, EnemyDetector enemyDetector)
+    public void Construct(SquadFormater squadFormater, EnemySpawner enemySpawner, EnemyDetector enemyDetector)
     {
-        _squadFormation = squadFormation;
+        _squadFormater = squadFormater;
         _enemySpawner = enemySpawner;
         _enemyDetector = enemyDetector;
     }
@@ -30,7 +30,7 @@ public class GameLoop : MonoBehaviour
         GameLoopStateMachine = new StateMachine();
 
         LoadLevelState = new LoadLevelState(this, GameLoopStateMachine);
-        StartLevelState = new StartLevelState(this, GameLoopStateMachine, _squadFormation, _enemySpawner, _enemyDetector);
+        StartLevelState = new StartLevelState(this, GameLoopStateMachine, _squadFormater, _enemySpawner, _enemyDetector);
         EndLevelState = new EndLevelState(this, GameLoopStateMachine);
 
         GameLoopStateMachine.ChangeState(LoadLevelState);

@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class SquadFormation : MonoBehaviour
+public class SquadFormater : MonoBehaviour
 {
     [SerializeField] private HeroData _testHeroData1;
     [SerializeField] private HeroData _testHeroData2;
@@ -14,16 +14,6 @@ public class SquadFormation : MonoBehaviour
     public void Construct(GameFactory gameFactory)
     {
         _gameFactory = gameFactory;
-    }
-
-    public void SaveHeroesPreset()
-    {
-    }
-
-    public void LoadSquadPreset()
-    {
-        SetHeroToSlot(_testHeroData1, 0);
-        SetTurretToSlot(_testTurretData, _turretSlot);
     }
 
     public void SetHeroToSlot(HeroData heroData, int slotIndex)

@@ -8,7 +8,7 @@ public class SquadInventory : MonoBehaviour
 
     private readonly UIInventorySlot[] _uiSquadHeroSlots = new UIInventorySlot[4];
     private UISquadInventory _uiSquadInventory;
-    private SquadFormation _squadFormation;
+    private SquadFormater _squadFormater;
 
     public InventoryWithSlots Inventory => _uiSquadInventory.Inventory;
 
