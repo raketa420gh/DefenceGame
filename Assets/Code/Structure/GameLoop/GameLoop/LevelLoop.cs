@@ -7,11 +7,13 @@ public class LevelLoop
     public event Action OnLevelWon;
     public event Action OnLevelLose;
 
-    private EnemyDetector _enemyDetector;
+    private SquadFormationUI _squadFormationUI;
 
-    public LevelLoop(EnemyDetector enemyDetector)
+    public LevelLoop(SquadFormationUI squadFormationUI)
     {
-        _enemyDetector = enemyDetector;
+        _squadFormationUI = squadFormationUI;
+
+        _squadFormationUI.OnPlayButtonPressed += StartLevel;
     }
 
     public void StartLevel()

@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c1ea909f7546a1ada77175d496f1ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyType: {fileID: 11400000, guid: 55f52faf1001cd947bdc870ecc59b8f6, type: 2}
+  enemyData: {fileID: 11400000, guid: 55f52faf1001cd947bdc870ecc59b8f6, type: 2}
   _aiPath: {fileID: -670984970823642769}
   _seeker: {fileID: -7211648311841195647}
 --- !u!114 &-7211648311841195647

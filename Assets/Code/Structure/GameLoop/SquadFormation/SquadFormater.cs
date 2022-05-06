@@ -3,11 +3,7 @@ using Zenject;
 
 public class SquadFormater : MonoBehaviour
 {
-    [SerializeField] private HeroData _testHeroData1;
-    [SerializeField] private HeroData _testHeroData2;
-    [SerializeField] private TurretData _testTurretData;
     [SerializeField] private SquadHeroSlot[] _heroSlots = new SquadHeroSlot[4];
-    [SerializeField] private SquadTurretSlot _turretSlot = new SquadTurretSlot();
     private GameFactory _gameFactory;
 
     [Inject]

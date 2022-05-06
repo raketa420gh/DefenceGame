@@ -868,8 +868,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heroData1: {fileID: 11400000, guid: eae26472268820846bff036cb4ad6031, type: 2}
   _heroData2: {fileID: 11400000, guid: 2f4ef7a0447df114098b7e7640d07b82, type: 2}
-  _turretSlot: {fileID: 394507859}
-  _heroSlots:
+  _turretData: {fileID: 11400000, guid: b8997905f9c7c514a9f26cd567d05ada, type: 2}
+  _turretSquadSlots:
+  - {fileID: 394507859}
+  _heroSquadSlots:
   - {fileID: 2001690759}
   - {fileID: 1793904150}
   - {fileID: 733688294}
@@ -892,6 +894,7 @@ MonoBehaviour:
   - {fileID: 1790976056}
   - {fileID: 625122570}
   _squadFormater: {fileID: 982422953}
+  _playButton: {fileID: 1196275981}
 --- !u!1 &91097482
 GameObject:
   m_ObjectHideFlags: 0
@@ -7780,15 +7783,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5123a2ae3f994a388e1b8e1fd4ee07aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _testHeroData1: {fileID: 11400000, guid: eae26472268820846bff036cb4ad6031, type: 2}
-  _testHeroData2: {fileID: 11400000, guid: 2f4ef7a0447df114098b7e7640d07b82, type: 2}
-  _testTurretData: {fileID: 11400000, guid: b8997905f9c7c514a9f26cd567d05ada, type: 2}
   _heroSlots:
   - {fileID: 408643085}
   - {fileID: 495299903}
   - {fileID: 1410984984}
   - {fileID: 1811332894}
-  _turretSlot: {fileID: 2141706309}
 --- !u!4 &982422954
 Transform:
   m_ObjectHideFlags: 0
@@ -8708,7 +8707,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1196275982}
   m_OnClick:
     m_PersistentCalls:
@@ -13759,6 +13758,7 @@ GameObject:
   - component: {fileID: 2127320455}
   - component: {fileID: 2127320458}
   - component: {fileID: 2127320454}
+  - component: {fileID: 2127320459}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -13784,6 +13784,7 @@ MonoBehaviour:
   - {fileID: 2127320455}
   - {fileID: 2127320456}
   - {fileID: 2127320457}
+  - {fileID: 2127320459}
   - {fileID: 2127320454}
   _installerPrefabs: []
   _autoRun: 1
@@ -13867,7 +13868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e97484428f54e5d9707e636175ce41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  squadFormater: {fileID: 0}
+  squadFormater: {fileID: 982422953}
 --- !u!114 &2127320458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13881,6 +13882,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyDetector: {fileID: 2060384435}
+--- !u!114 &2127320459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127320451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6350413a59d24f87a8e49fd5eec0635a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SquadFormationUI: {fileID: 69024923}
 --- !u!1 &2141706306
 GameObject:
   m_ObjectHideFlags: 0
