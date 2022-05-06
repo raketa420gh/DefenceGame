@@ -10,6 +10,11 @@ public class SquadFormationUI : MonoBehaviour
     [SerializeField] private UIUnitSlot[] _unitsInventorySlots;
     [SerializeField] private SquadFormater _squadFormater;
 
+    private string _turretSlotName = "TurretSlot";
+    private string _heroSlotName = "HeroSlot";
+    private string _inventorySlotName = "InventorySlot";
+
+
     private void Start()
     {
         var allSlots = new List<UIUnitSlot>(_heroSlots);
@@ -22,21 +27,19 @@ public class SquadFormationUI : MonoBehaviour
             slot.Button.onClick.AddListener((() => SelectSlot(slot)));
         }
 
-        SetSlotsNames("TurretSlot", "HeroSlot", "InventorySlot");
+        SetSlotsNames(_turretSlotName, _heroSlotName, _inventorySlotName);
 
         var heroItem1 = new UnitItem(_heroData1);
-        SetHeroToUIUnitSlot(heroItem1, 0);
-        _squadFormater.SetHeroToSlot(_heroData1, 0);
+        SetHeroItemToUISlot(heroItem1, _unitsInventorySlots, 0);
 
         var heroItem2 = new UnitItem(_heroData2);
-        SetHeroToUIUnitSlot(heroItem2, 1);
-        _squadFormater.SetHeroToSlot(_heroData2, 1);
+        SetHeroItemToUISlot(heroItem2, _unitsInventorySlots, 1);
     }
-    
-    private void SetHeroToUIUnitSlot(UnitItem unitItem, int slotIndex)
+
+    private void SetHeroItemToUISlot(UnitItem unitItem, UIUnitSlot[] slots, int slotIndex)
     {
-        _heroSlots[slotIndex].Slot.SetItem(unitItem);
-        _heroSlots[slotIndex].Refresh();
+        slots[slotIndex].Slot.SetItem(unitItem);
+        slots[slotIndex].Refresh();
     }
 
     private void SetNewSlot(UIUnitSlot slot)
@@ -60,7 +63,41 @@ public class SquadFormationUI : MonoBehaviour
 
     private void SelectSlot(UIUnitSlot slot)
     {
-        if (!slot.Slot.IsEmpty)
-            Debug.Log($"{slot.gameObject.name} with Unit Item {slot.Slot.ItemType} selected");
+        if (!slot.Slot.IsEmpty && slot.Slot.Item != null)
+        {
+            SelectHeroTest(slot, 1, 1);
+            SelectHeroTest(slot, 2, 2);
+        }
+    }
+
+    private void SelectHeroTest(UIUnitSlot slot, int inventorySlotNumber, int heroSlotNumber)
+    {
+        if (slot.gameObject.name == $"{_inventorySlotName}{inventorySlotNumber}")
+        {
+            TransitFromSlotToSlot(slot.Slot, _heroSlots[heroSlotNumber-1].Slot);
+
+            slot.Refresh();
+            _heroSlots[heroSlotNumber-1].Refresh();
+            
+            _squadFormater.SetHeroToSlot(_heroData1, heroSlotNumber-1);
+        }
+    }
+
+    private void TransitFromSlotToSlot(IInventorySlot fromSlot, IInventorySlot toSlot)
+    {
+        if (fromSlot.IsEmpty)
+            return;
+        if (toSlot.IsFull)
+            return;
+        if (!toSlot.IsEmpty && fromSlot.ItemType != toSlot.ItemType)
+            return;
+
+        if (toSlot.IsEmpty)
+        {
+            toSlot.SetItem(fromSlot.Item);
+            fromSlot.Clear();
+        }
+
+        fromSlot.Clear();
     }
 }

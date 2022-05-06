@@ -24,10 +24,10 @@ public class InventorySlot : IInventorySlot
 
     public void Clear()
     {
-        if (!IsEmpty)
-            return;
+        //if (!IsEmpty)
+            //return;
 
-        Item.State.Amount = 0;
+        //Item.State.Amount = 0;
         Item = null;
     }
 }
