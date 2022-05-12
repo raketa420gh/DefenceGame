@@ -11,13 +11,8 @@ public class Hero : MonoBehaviour
         _firearms = GetComponent<Firearms>();
     }
 
-    private void Start()
+    public void StartShooting()
     {
-        StartShooting();
-    }
-
-    private void StartShooting()
-    {
-        _firearms.StartTurretShooting(_data.AttackSpeed);
+        _firearms.StartShooting(_data.AttackSpeed);
     }
 }

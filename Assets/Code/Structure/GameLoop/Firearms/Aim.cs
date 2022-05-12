@@ -108,7 +108,7 @@ public class Aim : MonoBehaviour
     {
         _target = target;
         haveTarget = true;
-        Debug.Log($"Current target - {target.gameObject.name}");
+        //Debug.Log($"Current target - {target.gameObject.name}");
     }
 
     private void SetEnemyAsTarget(Enemy enemy)

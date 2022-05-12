@@ -17,7 +17,7 @@ public class Firearms : MonoBehaviour, IFirearms
         _gameFactory = gameFactory;
     }
     
-    public async Task StartTurretShooting(float period, float startDelay = 0f)
+    public async Task StartShooting(float period, float startDelay = 0f)
     {
         await UniTask.Delay(TimeSpan.FromSeconds(startDelay));
 
@@ -34,11 +34,11 @@ public class Firearms : MonoBehaviour, IFirearms
         {
             Vector3 offset = Vector3.up / 2;
             Shoot(_aim.Target.position + offset);
+            Debug.Log($"{gameObject.name} shooting target != null");
         }
-        //else
-            //Debug.Log($"{gameObject} aim = null");
+        
+        Debug.Log($"{gameObject.name} shooting target = null");
     }
-
     public void Shoot(Vector3 targetPosition)
     {
         IProjectile projectile = _gameFactory.CreateShell(_muzzle.position, _shellPath);
