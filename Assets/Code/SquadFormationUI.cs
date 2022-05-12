@@ -63,6 +63,8 @@ public class SquadFormationUI : MonoBehaviour
             SetNewSlot(slot, UIUnitSlotType.HeroSquad);
 
         SetSlotsNames(_turretSlotName, _heroSlotName, _inventorySlotName);
+        
+        SelectTurret();
     }
 
     private void SetItemToUISlot(UnitItem unitItem, UIUnitSlot[] slots, int slotIndex)
@@ -129,6 +131,11 @@ public class SquadFormationUI : MonoBehaviour
             availableSlot.Refresh();
             
             _squadFormater.SetHeroToSlot(_heroData1, availableSlot.Index-1);
+    }
+
+    private void SelectTurret()
+    {
+        _squadFormater.SetTurretToSlot(_turretData);
     }
 
     private void TransitFromSlotToSlot(IInventorySlot fromSlot, IInventorySlot toSlot)

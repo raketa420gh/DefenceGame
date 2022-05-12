@@ -24,10 +24,10 @@ public class StartLevelState : GameLoopState
     {
         base.Enter();
         
-        StartNewLevel();
+        CreateNewLevelLoop();
     }
 
-    private void StartNewLevel()
+    private void CreateNewLevelLoop()
     {
         _levelLoop = new LevelLoop(_squadFormationUI);
         _levelLoop.OnLevelStarted += OnLevelStarted;
@@ -39,7 +39,7 @@ public class StartLevelState : GameLoopState
     
     private void OnLevelStarted()
     {
-        _enemySpawner.StartSpawningEnemies(EnemyTier.Tier3, 0.5f);
+        _enemySpawner.StartSpawningEnemies(EnemyTier.Tier3, 1f);
     }
 
     private void OnLevelWon()
