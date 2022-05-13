@@ -34,10 +34,7 @@ public class Firearms : MonoBehaviour, IFirearms
         {
             Vector3 offset = Vector3.up / 2;
             Shoot(_aim.Target.position + offset);
-            Debug.Log($"{gameObject.name} shooting target != null");
         }
-        
-        Debug.Log($"{gameObject.name} shooting target = null");
     }
     public void Shoot(Vector3 targetPosition)
     {
