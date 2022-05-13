@@ -42,4 +42,12 @@ public class GameFactory : IGameFactory
         IProjectile projectile = turretShell.GetComponent<IProjectile>();
         return projectile;
     }
+
+    public GameObject CreateAbilityPointerSphere(Vector3 position, string path = AssetPath.AbilityPointerSphere,
+        Transform parent = null)
+    {
+        GameObject pointer = _assetProvider.Instantiate(path, position, Quaternion.identity);
+        pointer.transform.SetParent(parent);
+        return pointer;
+    }
 }

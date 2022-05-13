@@ -1,24 +1,34 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Zenject;
 
 public class UIAbilityButton : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    public event Action OnAbilityActivated;
+    
+    private GameFactory _factory;
     private Button _button;
+    private Image _image;
 
-    private GameObject _debugObject;
+    private GameObject _pointerObject;
+
+    [Inject]
+    public void Construct(GameFactory factory)
+    {
+        _factory = factory;
+    }
 
     private void Awake()
     {
         _button = GetComponent<Button>();
+        _image = GetComponent<Image>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log($"OnBeginDrag {eventData}");
-
-        _debugObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        _debugObject.GetComponent<Collider>().enabled = false;
+        _pointerObject = _factory.CreateAbilityPointerSphere(transform.position);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -32,11 +42,29 @@ public class UIAbilityButton : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         }
 
         Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
-        _debugObject.transform.position = hit.point;
+        _pointerObject.transform.position = hit.point;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log($"OnEndDrag {eventData}");
+        Destroy(_pointerObject);
+        OnAbilityActivated?.Invoke();
     }
+}
+
+public class DamageDealer
+{
+    public event Action<int> OnDamageInflicted;
+    
+    public void InflictDamage(int amount)
+    {
+        OnDamageInflicted?.Invoke(amount);
+    }
+}
+
+public enum AbilityType
+{
+    Undirected = 0,
+    Directed = 1,
+    Regionally = 2
 }
